@@ -1,3 +1,10 @@
+"""
+Arsenal
+Jake Rothacker
+This file contains the Arsenal class which organizes the bullets shot by the player ship into a pygame sprite group
+This code is variation of sample code provided by Professor Gabriel Walters
+7-25-2026
+"""
 import pygame
 from typing import TYPE_CHECKING
 from bullet import Bullet

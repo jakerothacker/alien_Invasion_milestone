@@ -1,3 +1,10 @@
+"""
+Settings
+Jake Rothacker
+This file contains the Settings class which holds values that are static or change infrequently during the course of the game.
+This code is a variation of sample code provided by Professor Gabriel Walters
+7-25-2026
+"""
 from pathlib import Path
 class Settings:
 

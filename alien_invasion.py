@@ -12,7 +12,8 @@ from ship import Ship
 from arsenal import Arsenal
 
 class AlienInvasion:
-    
+    """A class that contains the Alien Invasion game
+    """
     def __init__(self):
         
         pygame.init()
@@ -34,7 +35,8 @@ class AlienInvasion:
 
 
     def run_game(self):
-        
+        """runs the Alien Invasion game (Turn on button)
+        """
         while self.running:
             self._check_events()
             self.ship.update()
@@ -43,11 +45,15 @@ class AlienInvasion:
             
 
     def _update_screen(self):
+        """draws the objects on the screen and flips
+        """
         self.screen.blit(self.bg, (0,0))
         self.ship.draw()
         pygame.display.flip()
 
     def _check_events(self):
+        """Checks for player input
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
@@ -60,6 +66,11 @@ class AlienInvasion:
 
 
     def _check_keydown_events(self, event):
+        """checks if the player pressed any keys down
+        
+        Args:
+            event: any player input that pygame can recognise
+        """
         if event.key == pygame.K_UP:
             self.ship.moving_up = True
         elif event.key == pygame.K_DOWN:
@@ -74,6 +85,12 @@ class AlienInvasion:
                 self.laser_sound.fadeout(250)
 
     def _check_keyup_events(self, event):
+        
+        """checks if the player releaes any keys
+
+        Args:
+            event: any player input that pygame can recognise
+        """
         if event.key == pygame.K_UP:
             self.ship.moving_up = False
         elif event.key == pygame.K_DOWN:
