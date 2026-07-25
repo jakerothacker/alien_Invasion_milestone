@@ -12,13 +12,14 @@ class Ship:
         self.game = game
         self.settings = game.settings
         self.screen = game.screen
-        self.screen_rect = self.screen.get_rect()
+        self.boundaries = self.screen.get_rect()
 
         self.image = pygame.image.load(self.settings.ship_file)
         self.image = pygame.transform.scale(self.image, (self.settings.ship_w,self.settings.ship_h))
+        self.image = pygame.transform.rotate(self.image, 270)
 
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.midleft = self.boundaries.midleft
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
