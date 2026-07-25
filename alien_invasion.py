@@ -1,11 +1,20 @@
+"""
+Alien Invasion
+Jake Rothacker
+This file contains the AlienInvasion class which organizes and runs the game. Also if this file is run as __main__ the game will start
+This code is a variation of sample code provided by Professor Gabriel Walters
+7-25-2026
+"""
 import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from arsenal import Arsenal
 
 class AlienInvasion:
-
+    
     def __init__(self):
+        
         pygame.init()
         self.settings = Settings()
 
@@ -17,15 +26,21 @@ class AlienInvasion:
         self.running = True
         self.clock = pygame.time.Clock()
 
-        self.ship = Ship(self)
+        pygame.mixer.init()
+        self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
+        self.laser_sound.set_volume(0.7)
+
+        self.ship = Ship(self,Arsenal(self))
 
 
     def run_game(self):
+        
         while self.running:
             self._check_events()
             self.ship.update()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
+            
 
     def _update_screen(self):
         self.screen.blit(self.bg, (0,0))
@@ -53,6 +68,10 @@ class AlienInvasion:
             self.running = False
             pygame.quit()
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            if self.ship.fire():
+                self.laser_sound.play()
+                self.laser_sound.fadeout(250)
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_UP:
