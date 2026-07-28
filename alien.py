@@ -26,12 +26,22 @@ class Alien(Sprite):
         self.rect.x = x
         self.rect.y = y
 
-        #self.y = float(self.rect.y)
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+
 
     def update(self):
         """updates the alien enemy
         """
-        pass
+        temp_speed = self.settings.fleet_speed
+        if self.check_edges():
+            self.settings.fleet_direction *= -1
+        self.y += temp_speed * self.settings.fleet_direction
+        self.rect.y = self.y
+
+    def check_edges(self):
+        return (self.rect.bottom >= self.boundaries.bottom or self.rect.top <= self.boundaries.top)
 
     def draw_alien(self):
         """draws the alien on the screen
