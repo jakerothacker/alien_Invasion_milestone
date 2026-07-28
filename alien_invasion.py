@@ -33,7 +33,7 @@ class AlienInvasion:
         self.laser_sound.set_volume(0.7)
 
         self.ship = Ship(self,Arsenal(self))
-        self.alien = Alien(self, 10,10)
+        self.alien = Alien(self, 1000,10)
 
     def run_game(self):
         """runs the Alien Invasion game (Turn on button)
