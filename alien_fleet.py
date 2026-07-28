@@ -26,11 +26,11 @@ class AlienFleet:
         fleet_h,fleet_w = self.calculate_fleet_size(alien_h, screen_h , alien_w, screen_w)
 
         half_screen = screen_w // 2
-        fleet_vertical_space = fleet_h * alien_h
-        fleet_horizontal_space = fleet_w * alien_w
-        y_offset = int((screen_h-fleet_vertical_space)//2)
-        x_offset = int((half_screen-fleet_horizontal_space)//2)
+        y_offset, x_offset = self.calc_offset(alien_w, alien_h, screen_h, fleet_h, fleet_w, half_screen)
        
+        self._create_rectangle_fleet(alien_w, alien_h, fleet_h, fleet_w, half_screen, y_offset, x_offset)
+
+    def _create_rectangle_fleet(self, alien_w, alien_h, fleet_h, fleet_w, half_screen, y_offset, x_offset):
         for col in range(fleet_w):
             for row in range(fleet_h):
                 current_y = alien_h *row + y_offset
@@ -38,6 +38,13 @@ class AlienFleet:
                 if row % 2 ==0 or col%2 == 0:
                     continue
                 self._create_alien(current_x , current_y)
+
+    def calc_offset(self, alien_w, alien_h, screen_h, fleet_h, fleet_w, half_screen):
+        fleet_vertical_space = fleet_h * alien_h
+        fleet_horizontal_space = fleet_w * alien_w
+        y_offset = int((screen_h-fleet_vertical_space)//2)
+        x_offset = int((half_screen-fleet_horizontal_space)//2)
+        return y_offset,x_offset
 
     def calculate_fleet_size(self, alien_h, screen_h, alien_w, screen_w):
 
