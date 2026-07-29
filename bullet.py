@@ -3,7 +3,7 @@ Bullet
 Jake Rothacker
 This file contains the Bullet class which makes the bullets that are a part of the arsenal
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-25-2026
+7-29-2026
 """
 import pygame
 from pygame.sprite import Sprite
@@ -34,7 +34,7 @@ class Bullet(Sprite):
         self.x = float(self.rect.x)
 
     def update(self):
-        """moves the bullet based off of the speed in settings
+        """moves the bullet based off of the speed and direction in settings
         """
         self.x += self.settings.bullet_speed * self.direction
         self.rect.x = self.x

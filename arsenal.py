@@ -1,9 +1,9 @@
 """
 Arsenal
 Jake Rothacker
-This file contains the Arsenal class which organizes the bullets shot by the player ship into a pygame sprite group
-This code is variation of sample code provided by Professor Gabriel Walters
-7-25-2026
+This file contains the Arsenal class which organizes the bullets into a pygame sprite group
+This code is a variation of sample code provided by Professor Gabriel Walters
+7-29-2026
 """
 import pygame
 from typing import TYPE_CHECKING
@@ -27,7 +27,7 @@ class Arsenal:
         self._remove_bullets_offscreen()
 
     def _remove_bullets_offscreen(self):
-        """removes bullets that are right of the screen)
+        """removes bullets that are right or left of the screen)
         """
         for bullet in self.arsenal.copy():
             if bullet.rect.left >= self.settings.screen_w or bullet.rect.right<=0:
@@ -40,7 +40,11 @@ class Arsenal:
             bullet.draw_bullet()
 
     def fire_bullet(self,location,direction):
-        """adds a bullet to the sprte group if able to
+        """adds a bullet to the sprite group if able to
+
+        Args:
+            location (tuple): x and y coordinate of where the bullet originates
+            direction (Int): 1 or -1 so the bullet moves in the right direction
 
         Returns:
             Bool: Returns true if a bullet was added, False otherwise

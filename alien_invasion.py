@@ -3,7 +3,7 @@ Alien Invasion
 Jake Rothacker
 This file contains the AlienInvasion class which organizes and runs the game. Also if this file is run as __main__ the game will start
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-25-2026
+7-29-2026
 """
 import sys
 import pygame
@@ -57,6 +57,9 @@ class AlienInvasion:
             self.clock.tick(self.settings.FPS)
 
     def _check_collisions(self):
+            """A method that checks if the ship and an alien collide, the ship is hit by an alien lazer,
+               if an alien hits the left, an alien is hit by a lazer, or if all aliens are destroyed
+            """
             if self.ship.check_collisions(self.alien_fleet.fleet):
                 self._check_game_status()
             if self.ship.check_collisions(self.alien_fleet.arsenal.arsenal):
@@ -73,6 +76,9 @@ class AlienInvasion:
                 self._reset_level()
 
     def _check_game_status(self):
+        """checks if there are any lives left then removes one life and restarts the level if there 
+            is a life left otherwise it sets self.game_active to false
+        """
         if self.game_stats.ships_left >0:
             self.game_stats.ships_left -=1
             self._reset_level()
@@ -82,6 +88,8 @@ class AlienInvasion:
 
             
     def _reset_level(self):
+        """removes old bullets and aliens and make a new alien fleet
+        """
         self.ship.arsenal.arsenal.empty()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.arsenal.arsenal.empty()

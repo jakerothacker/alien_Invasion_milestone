@@ -1,3 +1,10 @@
+"""
+Alien
+Jake Rothacker
+This file contains the Alien class which is responsible for creating, moving, and drawing individual aliens.
+This code is a variation of sample code provided by Professor Gabriel Walters
+7-29-2026
+"""
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -43,6 +50,11 @@ class Alien(Sprite):
 
 
     def check_edges(self):
+        """checks if this alien is on the edge of the screen
+
+        Returns:
+            bool: True if at the edge of screen
+        """
         return (self.rect.bottom >= self.boundaries.bottom or self.rect.top <= self.boundaries.top)
 
     def draw_alien(self):
