@@ -39,14 +39,14 @@ class Arsenal:
         for bullet in self.arsenal:
             bullet.draw_bullet()
 
-    def fire_bullet(self,location):
+    def fire_bullet(self,location,direction):
         """adds a bullet to the sprte group if able to
 
         Returns:
             Bool: Returns true if a bullet was added, False otherwise
         """
         if len(self.arsenal) < self.settings.bullet_amount:
-            new_bullet = Bullet(self.game,location)
+            new_bullet = Bullet(self.game,location,direction)
             self.arsenal.add(new_bullet)
             return True
         return False

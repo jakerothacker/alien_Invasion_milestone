@@ -113,4 +113,4 @@ class AlienFleet:
             random_alien = random.choice(self.fleet.sprites())
             random_alien_midleft = random_alien.rect.midleft
            
-            self.arsenal.fire_bullet(random_alien_midleft)
+            self.arsenal.fire_bullet(random_alien_midleft,self.settings.fleet_bullet_direction)

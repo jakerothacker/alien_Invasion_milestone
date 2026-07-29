@@ -19,10 +19,11 @@ class Bullet(Sprite):
     Args:
         Sprite (class): simple base class for visible objects
     """
-    def __init__(self, game:'AlienInvasion',location:tuple):
+    def __init__(self, game:'AlienInvasion',location:tuple, direction:int):
         super().__init__()
         self.screen = game.screen
         self.settings = game.settings
+        self.direction = direction
 
         self.image = pygame.image.load(self.settings.bullet_file)
         self.image = pygame.transform.scale(self.image, (self.settings.bullet_w,self.settings.bullet_h))
@@ -35,7 +36,7 @@ class Bullet(Sprite):
     def update(self):
         """moves the bullet based off of the speed in settings
         """
-        self.x += self.settings.bullet_speed
+        self.x += self.settings.bullet_speed * self.direction
         self.rect.x = self.x
 
     def draw_bullet(self):
