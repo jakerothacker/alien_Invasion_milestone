@@ -39,6 +39,6 @@ class Settings:
         self.fleet_speed = 2
         self.fleet_direction = 1
         self.fleet_drop_speed = 30
-        self.fleet_fire_chance = 5 #this is percent chance per frame
+        self.fleet_fire_chance = 20 #this is percent chance out of 1000 per frame that a random alien shoots
         
 
