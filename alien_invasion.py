@@ -59,6 +59,8 @@ class AlienInvasion:
     def _check_collisions(self):
             if self.ship.check_collisions(self.alien_fleet.fleet):
                 self._check_game_status()
+            if self.ship.check_collisions(self.alien_fleet.arsenal.arsenal):
+                self._check_game_status()
 
             if self.alien_fleet.check_fleet_left():
                 self._check_game_status()
@@ -82,6 +84,7 @@ class AlienInvasion:
     def _reset_level(self):
         self.ship.arsenal.arsenal.empty()
         self.alien_fleet.fleet.empty()
+        self.alien_fleet.arsenal.arsenal.empty()
         self.alien_fleet.create_fleet()
 
     def _update_screen(self):
