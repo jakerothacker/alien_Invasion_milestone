@@ -1,21 +1,23 @@
 import pygame
 from typing import TYPE_CHECKING
 from alien import Alien
+import random
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
-
+    from arsenal import Arsenal
 
 
 class AlienFleet:
 
-    def __init__(self, game:'AlienInvasion'):
+    def __init__(self, game:'AlienInvasion', arsenal :'Arsenal'):
         self.game = game
         self.settings = game.settings
         self.fleet = pygame.sprite.Group()
         self.fleet_direction = self.settings.fleet_direction
         self.fleet_drop_speed = self.settings.fleet_drop_speed
 
-        self.create_fleet()
+        self.create_fleet() #REMOVE THIS LATER I THINK IT IS THE REASON FOR THE 2X HEALTH ALIENS
+        self.arsenal = arsenal
 
     def create_fleet(self):
         alien_w = self.settings.alien_h #h and w are switched due to rotation
@@ -84,11 +86,14 @@ class AlienFleet:
     def update_fleet(self):
         self._check_fleet_edges()
         self.fleet.update()
+        self.arsenal.update_arsenal()
+        self.aliens_fire()
 
     def draw(self):
         alien: Alien
         for alien in self.fleet:
             alien.draw_alien()
+        self.arsenal.draw()
 
     def check_collisions(self, other_group):
         return pygame.sprite.groupcollide(self.fleet, other_group, True, True)
@@ -102,3 +107,10 @@ class AlienFleet:
 
     def check_destroyed_status(self):
         return not self.fleet
+
+    def aliens_fire(self):
+        if random.randint(1,100) == 1:
+            random_alien = random.choice(self.fleet.sprites())
+            random_alien_midleft = random_alien.rect.midleft
+           
+            self.arsenal.fire_bullet(random_alien_midleft)
