@@ -16,7 +16,7 @@ class AlienFleet:
         self.fleet_direction = self.settings.fleet_direction
         self.fleet_drop_speed = self.settings.fleet_drop_speed
 
-        self.create_fleet() #REMOVE THIS LATER I THINK IT IS THE REASON FOR THE 2X HEALTH ALIENS
+        #self.create_fleet() #REMOVE THIS LATER I THINK IT IS THE REASON FOR THE 2X HEALTH ALIENS
         self.arsenal = arsenal
 
     def create_fleet(self):
