@@ -67,7 +67,7 @@ class Ship:
         Returns:
             Bool: True if a bullet can be fired, False if not
         """
-        return self.arsenal.fire_bullet()
+        return self.arsenal.fire_bullet(self.rect.midright)
 
     def check_collisions(self, other_group):
         if pygame.sprite.spritecollideany(self,other_group):

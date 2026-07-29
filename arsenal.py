@@ -30,7 +30,7 @@ class Arsenal:
         """removes bullets that are right of the screen)
         """
         for bullet in self.arsenal.copy():
-            if bullet.rect.left >= self.settings.screen_w :
+            if bullet.rect.left >= self.settings.screen_w or bullet.rect.right<=0:
                 self.arsenal.remove(bullet)
 
     def draw(self):
@@ -39,14 +39,14 @@ class Arsenal:
         for bullet in self.arsenal:
             bullet.draw_bullet()
 
-    def fire_bullet(self):
+    def fire_bullet(self,location):
         """adds a bullet to the sprte group if able to
 
         Returns:
             Bool: Returns true if a bullet was added, False otherwise
         """
         if len(self.arsenal) < self.settings.bullet_amount:
-            new_bullet = Bullet(self.game)
+            new_bullet = Bullet(self.game,location)
             self.arsenal.add(new_bullet)
             return True
         return False

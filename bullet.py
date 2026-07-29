@@ -19,7 +19,7 @@ class Bullet(Sprite):
     Args:
         Sprite (class): simple base class for visible objects
     """
-    def __init__(self, game:'AlienInvasion'):
+    def __init__(self, game:'AlienInvasion',location:tuple):
         super().__init__()
         self.screen = game.screen
         self.settings = game.settings
@@ -29,7 +29,7 @@ class Bullet(Sprite):
         self.image = pygame.transform.rotate(self.image,270)
 
         self.rect = self.image.get_rect()
-        self.rect.midright = game.ship.rect.midright
+        self.rect.midright = location
         self.x = float(self.rect.x)
 
     def update(self):
