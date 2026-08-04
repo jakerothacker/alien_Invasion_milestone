@@ -188,7 +188,14 @@ class AlienFleet:
     def aliens_fire(self):
         """checks if the aliens try to shoot a bullet, then fire if they are able to
         """
-        if random.randint(1,1000) <= self.settings.fleet_fire_chance:
+        min_x = self.settings.screen_w
+        for alien in self.fleet:
+            x_pos = alien.x
+            if x_pos < min_x:
+                min_x = x_pos
+        distance_modifier = min_x*(100/self.settings.fleet_fire_ave)/self.settings.screen_w
+        if random.randint(1,1000) <= self.settings.fleet_fire_chance *(distance_modifier**2):
             random_alien = random.choice(self.fleet.sprites())
-            random_alien_midleft = random_alien.rect.midleft
-            self.arsenal.fire_bullet(random_alien_midleft,self.settings.fleet_bullet_direction)
+            if random_alien.rect.left >= self.settings.fleet_fire_min_distance*self.settings.screen_w/100:
+                random_alien_midleft = random_alien.rect.midleft
+                self.arsenal.fire_bullet(random_alien_midleft,self.settings.fleet_bullet_direction)
