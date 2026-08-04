@@ -7,7 +7,7 @@ if TYPE_CHECKING:
 
 class Button:
 
-    def __init__(self, game : AlienInvasion, msg):
+    def __init__(self, game : "AlienInvasion", msg):
         self.game = game
         self.screen = game.screen
         self.boundaries = game.screen.get_rect()
