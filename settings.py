@@ -53,9 +53,9 @@ class Settings:
         self.bullet_h = 80
         self.fleet_fire_chance = 20 #this is a chance out of 1000 per frame that a random alien shoots
 
-
         self.fleet_speed = 2
         self.fleet_drop_speed = 40   
+        self.alien.points = 50
 
     def increase_difficulty(self):
         self.ship_speed *= self.difficulty_scale
