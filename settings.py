@@ -52,10 +52,15 @@ class Settings:
         self.bullet_amount = 5
         self.bullet_w = 25
         self.bullet_h = 80
-        self.fleet_fire_chance = 20 #this is a chance out of 1000 per frame that a random alien shoots when at ave point
+
+        self.fleet_fire_chance = 30 #this is a chance out of 1000 per frame that a random alien shoots when at ave point
+
         #fleet shoots more often when further away from the player ship
         self.fleet_fire_ave = 35 #pecent of the screen where the left most alien need to be for fire_chance to be accurate
-        self.fleet_fire_min_distance = 25 #this is the percentage of the screen where an alien won't shoot if to the left of it
+        self.fleet_fire_min_distance = 25 #this is the percentage of the screen where-
+                                          #an alien won't shoot if to the left of it
+        self.fleet_fire_power_factor = 3 #the fire chance modifer in linear with respect to distance-
+                                         #before it is raised to the power of the powerfactor
 
         self.fleet_speed = 2
         self.fleet_drop_speed = 40   

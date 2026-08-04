@@ -194,7 +194,8 @@ class AlienFleet:
             if x_pos < min_x:
                 min_x = x_pos
         distance_modifier = min_x*(100/self.settings.fleet_fire_ave)/self.settings.screen_w
-        if random.randint(1,1000) <= self.settings.fleet_fire_chance *(distance_modifier**2):
+
+        if random.randint(1,1000) <= self.settings.fleet_fire_chance *(distance_modifier**self.settings.fleet_fire_power_factor):
             random_alien = random.choice(self.fleet.sprites())
             if random_alien.rect.left >= self.settings.fleet_fire_min_distance*self.settings.screen_w/100:
                 random_alien_midleft = random_alien.rect.midleft
