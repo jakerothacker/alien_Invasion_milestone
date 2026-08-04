@@ -59,11 +59,11 @@ class HUD:
         self.level_rect.bottom = self.boundaries.bottom - self.padding
 
     def _draw_lives(self):
-        currennt_x = self.boundaries.right - ((self.settings.starting_ship_count+1)*(self.settings.ship_h - self.padding)) -self.padding
+        currennt_x = self.boundaries.right -self.padding - self.life_rect.width
         currennt_y = self.level_rect.top - self.padding - self.life_rect.height
         for _ in range(self.game_stats.ships_left):
             self.screen.blit(self.life_image,(currennt_x,currennt_y))
-            currennt_x += self.life_rect.width + self.padding
+            currennt_x -= self.life_rect.width + self.padding
 
     def draw(self):
         self.screen.blit(self.hi_score_image,self.hi_score_rect)
