@@ -75,8 +75,10 @@ class AlienInvasion:
             if collisions:
                 self.impact_sound.play()
                 self.impact_sound.fadeout(500)
+
             if self.alien_fleet.check_destroyed_status():
                 self._reset_level()
+                self.settings.increase_difficulty()
 
     def _check_game_status(self):
         """checks if there are any lives left then removes one life and restarts the level if there 
@@ -99,13 +101,13 @@ class AlienInvasion:
         self.alien_fleet.create_fleet()
 
     def restart_game(self):
-         #settign up dynamice settings
-         #reset game stats
-         #update Hud
-         self._reset_level()
-         self.ship._center_ship()
-         self.game_active = True
-         pygame.mouse.set_visible(False)
+        self.settings.initialize_dynamic_settings()
+        #reset game stats
+        #update Hud
+        self._reset_level()
+        self.ship._center_ship()
+        self.game_active = True
+        pygame.mouse.set_visible(False)
 
     def _update_screen(self):
         """draws the objects on the screen and flips
