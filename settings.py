@@ -45,6 +45,8 @@ class Settings:
         self.HUD_font_size = 20
         self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
 
+        self.freeze_time = 2.0
+
     def initialize_dynamic_settings(self):
         """sets up settings that may chagne during the course of the game
         """
