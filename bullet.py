@@ -3,7 +3,7 @@ Bullet
 Jake Rothacker
 This file contains the Bullet class which makes the bullets that are a part of the arsenal
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-29-2026
+8-5-2026
 """
 import pygame
 from pygame.sprite import Sprite

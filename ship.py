@@ -3,7 +3,7 @@ Ship
 Jake Rothacker
 This file contains the Ship class which organizes the ship and its armaments. 
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-25-2026
+8-5-2026
 """
 import pygame
 from typing import TYPE_CHECKING

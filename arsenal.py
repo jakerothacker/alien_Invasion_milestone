@@ -3,7 +3,7 @@ Arsenal
 Jake Rothacker
 This file contains the Arsenal class which organizes the bullets into a pygame sprite group
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-29-2026
+8-5-2026
 """
 import pygame
 from typing import TYPE_CHECKING

@@ -3,11 +3,12 @@ Settings
 Jake Rothacker
 This file contains the Settings class which holds values that are static or change infrequently during the course of the game.
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-25-2026
+8-5-2026
 """
 from pathlib import Path
 class Settings:
-
+    """Class that contains all changeable setting for the game
+    """
     def __init__(self):
         self.name: str = 'Alien Invasion'
         self.screen_w = 1200
@@ -45,6 +46,8 @@ class Settings:
         self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
 
     def initialize_dynamic_settings(self):
+        """sets up settings that may chagne during the course of the game
+        """
         self.ship_speed = 5
         self.starting_ship_count = 3
 
@@ -67,6 +70,8 @@ class Settings:
         self.alien_points = 50
 
     def increase_difficulty(self):
+        """makes the game faster(and harder) by increasing ship speed, bullet speed, and fleet speed"
+        """
         self.ship_speed *= self.difficulty_scale
         self.bullet_speed *= self.difficulty_scale
         self.fleet_speed *= self.difficulty_scale

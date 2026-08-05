@@ -3,7 +3,7 @@ Alien
 Jake Rothacker
 This file contains the Alien class which is responsible for creating, moving, and drawing individual aliens.
 This code is a variation of sample code provided by Professor Gabriel Walters
-7-29-2026
+8-5-2026
 """
 import pygame
 from pygame.sprite import Sprite
